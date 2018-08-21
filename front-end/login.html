@@ -1,74 +1,74 @@
-<DOCTYPE! html>
-  <html>
+<!doctype html>
+<html>
 
-  <head>
-    <!-- 引入样式 -->
-    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
-    <!-- 引入组件库 -->
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
-    <title>vue login demo</title>
-    <style>
-      * {
-        font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
-      }
+<head>
+  <!-- 引入样式 -->
+  <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+  <!-- 引入组件库 -->
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+  <title>vue login demo</title>
+  <style>
+    * {
+      font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+    }
 
-      .box-card {
-        width: 460px;
+    .box-card {
+      width: 460px;
 
-      }
+    }
 
-      .app {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100%;
-      }
+    .app {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+    }
 
-    </style>
-  </head>
+  </style>
+</head>
 
-  <body style="background-image: url(./bg.jpg)">
+<body style="background-image: url(./bg.jpg)">
 
-    <div id="app" v-bind:title="ye" class="app">
-      <div style="display: inline-flex">
-        <el-card class="box-card">
-          <div slot="header">学生会物资管理系统
-            <el-button style="float: right; padding: 3px 0" type="text">找回密码</el-button>
+  <div id="app" v-bind:title="ye" class="app">
+    <div style="display: inline-flex">
+      <el-card class="box-card">
+        <div slot="header">学生会物资管理系统
+          <el-button style="float: right; padding: 3px 0" type="text">找回密码</el-button>
+        </div>
+        <div style="display: flex;justify-content: center;flex-wrap: wrap">
+          <div style="width: 70%;justify-content: center">
+            <el-input placeholder="请输入内容" style="margin-bottom: 20px;margin-top: 15px">
+              <template slot="prepend">用户名</template>
+            </el-input>
           </div>
-          <div style="display: flex;justify-content: center;flex-wrap: wrap">
-            <div style="width: 70%;justify-content: center">
-              <el-input placeholder="请输入内容" style="margin-bottom: 20px;margin-top: 15px">
-                <template slot="prepend">用户名</template>
-              </el-input>
-            </div>
-            <div style="width: 70%;justify-content: center">
-              <el-input placeholder="请输入内容">
-                <template slot="prepend"> 密码 </template>
-              </el-input>
-            </div>
+          <div style="width: 70%;justify-content: center">
+            <el-input placeholder="请输入内容">
+              <template slot="prepend"> 密码 </template>
+            </el-input>
           </div>
+        </div>
 
-          <div style="margin-top: 20px;display: inline-flex;justify-content: center;width: 100%;margin-bottom: 15px">
-            <el-button type="primary" v-on:click="show=!show" style="font-size: 14px;width: 70%">登陆</el-button>
-          </div>
-        </el-card>
-
-      </div>
+        <div style="margin-top: 20px;display: inline-flex;justify-content: center;width: 100%;margin-bottom: 15px">
+          <el-button type="primary" v-on:click="show=!show" style="font-size: 14px;width: 70%">登陆</el-button>
+        </div>
+      </el-card>
 
     </div>
-    </div>
-  </body>
-  <footer>
-    <script>
-      var app = new Vue({
-        el: "#app",
-        data: {
 
-        }
-      })
+  </div>
+  </div>
+</body>
+<footer>
+  <script>
+    var app = new Vue({
+      el: "#app",
+      data: {
 
-    </script>
-  </footer>
+      }
+    })
 
-  </html>
+  </script>
+</footer>
+
+</html>

@@ -8,8 +8,8 @@ var app = new Vue({
     el: '#app',
     data: {
         message: Date().toString(),
-        m2:'',
-        i:0,
+        m2: '',
+        i: 0,
         show: true,
         todos: [{
             text: "a",
@@ -26,12 +26,11 @@ var app = new Vue({
 });
 
 app.$watch("message", function (newvalue, oldvalue) {
-    console.log(this.i);
-    if(this.i>3)
-    return;
-    document.getElementById("pp").innerHTML=document.getElementById("pp").innerHTML+"<br>"+newvalue;
+    if (this.i > 3)
+        return;
+    document.getElementById("pp").innerHTML = document.getElementById("pp").innerHTML + "<br>" + newvalue;
     this.i++;
-    
+
 })
 
 var Main = {
