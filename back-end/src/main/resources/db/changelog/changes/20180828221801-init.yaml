@@ -1,0 +1,364 @@
+databaseChangeLog:
+- changeSet:
+      id: 1
+      author: huww98
+      changes:
+      - createTable:
+            tableName: material_category
+            columns:
+            - column:
+                  name: id
+                  type: bigint(20)
+                  autoIncrement: true
+                  constraints:
+                      primaryKey: true
+                      nullable: false
+            - column:
+                  name: name
+                  type: varchar(255)
+                  constraints:
+                      nullable: false
+      - createTable:
+            tableName: user
+            columns:
+            - column:
+                  name: id
+                  type: bigint(20)
+                  autoIncrement: true
+                  constraints:
+                      primaryKey: true
+                      nullable: false
+            - column:
+                  name: user_name
+                  type: varchar(255)
+                  constraints:
+                      nullable: false
+      - createTable:
+            tableName: organization
+            columns:
+            - column:
+                  name: id
+                  type: bigint(20)
+                  autoIncrement: true
+                  constraints:
+                      primaryKey: true
+                      nullable: false
+            - column:
+                  name: name
+                  type: varchar(255)
+                  constraints:
+                      nullable: false
+      - createTable:
+            tableName: person
+            columns:
+            - column:
+                  name: id
+                  type: bigint(20)
+                  autoIncrement: true
+                  constraints:
+                      primaryKey: true
+                      nullable: false
+            - column:
+                  name: name
+                  type: varchar(255)
+                  constraints:
+                      nullable: false
+            - column:
+                  name: organization_id
+                  type: bigint(20)
+                  constraints:
+                      foreignKeyName: fk_person_organization
+                      references: organization(id)
+      - createTable:
+            tableName: person_metadata_type
+            columns:
+            - column:
+                  name: id
+                  type: bigint(20)
+                  autoIncrement: true
+                  constraints:
+                      primaryKey: true
+                      nullable: false
+            - column:
+                  name: name
+                  type: varchar(255)
+                  constraints:
+                      nullable: false
+      - insert:
+            tableName: person_metadata_type
+            columns:
+            - column:
+                  name: name
+                  value: 手机号
+      - insert:
+            tableName: person_metadata_type
+            columns:
+            - column:
+                  name: name
+                  value: 学号
+      - createTable:
+            tableName: person_metadata
+            columns:
+            - column:
+                  name: person_id
+                  type: bigint(20)
+                  constraints:
+                      primaryKey: true
+                      nullable: false
+                      foreignKeyName: fk_person_metadata_person
+                      references: person(id)
+            - column:
+                  name: type_id
+                  type: bigint(20)
+                  constraints:
+                      primaryKey: true
+                      nullable: false
+                      foreignKeyName: fk_person_metadata_type
+                      references: person_metadata_type(id)
+            - column:
+                  name: value
+                  type: varchar(255)
+      - createTable:
+            tableName: use_application
+            columns:
+            - column:
+                  name: id
+                  type: bigint(20)
+                  autoIncrement: true
+                  constraints:
+                      primaryKey: true
+                      nullable: false
+            - column:
+                  name: approved_time
+                  type: datetime(6)
+            - column:
+                  name: approved_by_id
+                  type: bigint(20)
+                  constraints:
+                      foreignKeyName: fk_use_application_approved_by
+                      references: user(id)
+      - createTable:
+            tableName: return_record
+            columns:
+            - column:
+                  name: id
+                  type: bigint(20)
+                  autoIncrement: true
+                  constraints:
+                      primaryKey: true
+                      nullable: false
+            - column:
+                  name: return_time
+                  type: datetime(6)
+            - column:
+                  name: use_application_id
+                  type: bigint(20)
+                  constraints:
+                      nullable: false
+                      foreignKeyName: fk_return_record_use_application
+                      references: use_application(id)
+            - column:
+                  name: handled_by_id
+                  type: bigint(20)
+                  constraints:
+                      foreignKeyName: fk_return_record_handled_by
+                      references: user(id)
+      - createTable:
+            tableName: inventory_check
+            columns:
+            - column:
+                  name: id
+                  type: bigint(20)
+                  autoIncrement: true
+                  constraints:
+                      primaryKey: true
+                      nullable: false
+            - column:
+                  name: check_time
+                  type: datetime(6)
+            - column:
+                  name: handled_by_id
+                  type: bigint(20)
+                  constraints:
+                      foreignKeyName: fk_inventory_check_handled_by
+                      references: user(id)
+      - createTable:
+            tableName: inventory_counted_record
+            columns:
+            - column:
+                  name: material_category_id
+                  type: bigint(20)
+                  constraints:
+                      primaryKey: true
+                      nullable: false
+                      foreignKeyName: fk_inventory_counted_record_material_category
+                      references: material_category(id)
+            - column:
+                  name: count
+                  type: int(11)
+                  constraints:
+                      nullable: false
+      - createTable:
+            tableName: inventory_numbered_record
+            columns:
+            - column:
+                  name: material_category_id
+                  type: bigint(20)
+                  constraints:
+                      primaryKey: true
+                      nullable: false
+                      foreignKeyName: fk_inventory_numbered_record_material_category
+                      references: material_category(id)
+            - column:
+                  name: number
+                  type: varchar(20)
+                  constraints:
+                      primaryKey: true
+                      nullable: false
+      - createTable:
+            tableName: use_application_counted_record
+            columns:
+            - column:
+                  name: use_application_id
+                  type: bigint(20)
+                  constraints:
+                      primaryKey: true
+                      nullable: false
+                      foreignKeyName: fk_use_application_counted_record_use_application
+                      references: use_application(id)
+            - column:
+                  name: material_category_id
+                  type: bigint(20)
+                  constraints:
+                      primaryKey: true
+                      nullable: false
+                      foreignKeyName: fk_use_application_counted_record_material_category
+                      references: material_category(id)
+            - column:
+                  name: count
+                  type: int(11)
+                  constraints:
+                      nullable: false
+      - createTable:
+            tableName: use_application_numbered_record
+            columns:
+            - column:
+                  name: use_application_id
+                  type: bigint(20)
+                  constraints:
+                      primaryKey: true
+                      nullable: false
+                      foreignKeyName: fk_use_application_numbered_record_use_application
+                      references: use_application(id)
+            - column:
+                  name: material_category_id
+                  type: bigint(20)
+                  constraints:
+                      primaryKey: true
+                      nullable: false
+                      foreignKeyName: fk_use_application_numbered_record_material_category
+                      references: material_category(id)
+            - column:
+                  name: number
+                  type: varchar(20)
+                  constraints:
+                      primaryKey: true
+                      nullable: false
+      - createTable:
+            tableName: return_counted_record
+            columns:
+            - column:
+                  name: return_record_id
+                  type: bigint(20)
+                  constraints:
+                      primaryKey: true
+                      nullable: false
+                      foreignKeyName: fk_return_counted_record_return_record
+                      references: return_record(id)
+            - column:
+                  name: material_category_id
+                  type: bigint(20)
+                  constraints:
+                      primaryKey: true
+                      nullable: false
+                      foreignKeyName: fk_return_counted_record_material_category
+                      references: material_category(id)
+            - column:
+                  name: count
+                  type: int(11)
+                  constraints:
+                      nullable: false
+      - createTable:
+            tableName: return_numbered_record
+            columns:
+            - column:
+                  name: return_record_id
+                  type: bigint(20)
+                  constraints:
+                      primaryKey: true
+                      nullable: false
+                      foreignKeyName: fk_return_numbered_record_return_record
+                      references: return_record(id)
+            - column:
+                  name: material_category_id
+                  type: bigint(20)
+                  constraints:
+                      primaryKey: true
+                      nullable: false
+                      foreignKeyName: fk_return_numbered_record_material_category
+                      references: material_category(id)
+            - column:
+                  name: number
+                  type: varchar(20)
+                  constraints:
+                      primaryKey: true
+                      nullable: false
+      - createTable:
+            tableName: inventory_check_counted_record
+            columns:
+            - column:
+                  name: inventory_check_id
+                  type: bigint(20)
+                  constraints:
+                      primaryKey: true
+                      nullable: false
+                      foreignKeyName: fk_inventory_check_counted_record_inventory_check
+                      references: inventory_check(id)
+            - column:
+                  name: material_category_id
+                  type: bigint(20)
+                  constraints:
+                      primaryKey: true
+                      nullable: false
+                      foreignKeyName: fk_inventory_check_counted_record_material_category
+                      references: material_category(id)
+            - column:
+                  name: count
+                  type: int(11)
+                  constraints:
+                      nullable: false
+      - createTable:
+            tableName: inventory_check_number_record
+            columns:
+            - column:
+                  name: inventory_check_id
+                  type: bigint(20)
+                  constraints:
+                      primaryKey: true
+                      nullable: false
+                      foreignKeyName: fk_inventory_check_number_record_inventory_check
+                      references: inventory_check(id)
+            - column:
+                  name: material_category_id
+                  type: bigint(20)
+                  constraints:
+                      primaryKey: true
+                      nullable: false
+                      foreignKeyName: fk_inventory_check_number_record_material_category
+                      references: material_category(id)
+            - column:
+                  name: number
+                  type: varchar(20)
+                  constraints:
+                      primaryKey: true
+                      nullable: false

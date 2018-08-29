@@ -1,0 +1,22 @@
+spring:
+    profiles:
+        active: development
+    datasource:
+        url: jdbc:mysql://localhost:3306/mm?useSSL=false
+        username: root
+        password: 123456
+    jpa:
+        properties:
+            hibernate.dialect: org.hibernate.dialect.MySQL57Dialect
+---
+
+spring:
+    profiles: development
+    liquibase:
+        drop-first: true
+
+debug: true
+
+# uncomment the following lines to let hibernate generate database
+#spring.jpa.hibernate.ddl-auto: create
+#spring.liquibase.enabled: false
