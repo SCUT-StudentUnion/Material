@@ -4,7 +4,9 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Data
@@ -17,6 +19,12 @@ public class InventoryCheck {
     private User handledBy;
 
     private Date checkTime;
+
+    @OneToMany(mappedBy = "inventoryCheck")
+    private List<InventoryCheckCountedRecord> countedRecords = new ArrayList<>();
+
+    @OneToMany(mappedBy = "inventoryCheck")
+    private List<InventoryCheckNumberedRecord> numberedRecords = new ArrayList<>();
 }
 
 @Entity

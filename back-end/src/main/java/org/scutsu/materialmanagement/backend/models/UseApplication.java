@@ -4,7 +4,9 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Data
@@ -21,6 +23,11 @@ public class UseApplication {
     @ManyToOne
     private Person applicant;
 
+    @OneToMany(mappedBy = "useApplication")
+    private List<UseApplicationCountedRecord> countedRecords = new ArrayList<>();
+
+    @OneToMany(mappedBy = "useApplication")
+    private List<UseApplicationNumberedRecord> numberedRecords = new ArrayList<>();
 }
 
 @Entity

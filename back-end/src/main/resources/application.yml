@@ -12,10 +12,10 @@ spring:
 
 spring:
     profiles: development
-    liquibase:
-        drop-first: true
+#    liquibase:
+#        drop-first: true
 
-debug: true
+#debug: true
 
 # uncomment the following lines to let hibernate generate database
 #spring.jpa.hibernate.ddl-auto: create

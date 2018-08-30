@@ -29,7 +29,7 @@ public class Person {
 @Embeddable
 class PersonMetadata {
 
-    @ManyToOne
+    @ManyToOne(optional = false)
     private PersonMetadataType type;
 
     private String value;

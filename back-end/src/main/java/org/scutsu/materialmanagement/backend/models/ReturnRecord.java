@@ -4,7 +4,9 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Data
@@ -17,6 +19,12 @@ public class ReturnRecord {
     private User handledBy;
 
     private Date returnTime;
+
+    @OneToMany(mappedBy = "returnRecord")
+    private List<ReturnCountedRecord> countedRecords = new ArrayList<>();
+
+    @OneToMany(mappedBy = "returnRecord")
+    private List<ReturnNumberedRecord> numberedRecords = new ArrayList<>();
 }
 
 @Entity
