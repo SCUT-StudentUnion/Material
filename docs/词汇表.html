@@ -1,0 +1,40 @@
+---
+title: 词汇表
+---
+
+<h1>{{ page.title }}</h1>
+
+<dl>
+  <dt>User</dt>
+  <dd>物资管理系统的用户，如学生会办公室和仓库的值班人员，团委的老师等。</dd>
+
+  <dt>Organization</dt>
+  <dd>借用物资的组织。</dd>
+
+  <dt id="person">Person</dt>
+  <dd>前来借用物资的人。一个人可以属于0个或1个组织。</dd>
+
+  <dt>Material Category</dt>
+  <dd>物资分类，例如：桌子、帐篷。</dd>
+
+  <dt>Use Application</dt>
+  <dd>物资申请借出记录。</dd>
+
+  <dt>Applicant</dt>
+  <dd>物资借出的申请人。这是一个<a href="#person">Person</a></dd>
+
+  <dt>Return Record</dt>
+  <dd>物资借出的归还记录。同一个借出申请可以对应多个归还记录。</dd>
+
+  <dt>Inventory</dt>
+  <dd>当前的库存物资记录。</dd>
+
+  <dt>Inventory Check</dt>
+  <dd>库存清点情况记录。库存清点也可以用于从异常的状态中回复，可以用它来手动调整当前库存数据。</dd>
+
+  <dt>Counted Record</dt>
+  <dd>没有编号，只记数量的物资借出/归还/库存/库存清点记录。</dd>
+
+  <dt>Numbered Record</dt>
+  <dd>记录物资编号的物资借出/归还/库存/库存清点记录。</dd>
+</dl>

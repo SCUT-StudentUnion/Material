@@ -11,6 +11,9 @@ data class UseApplication(
     val approvedTime: Date,
 
     @ManyToOne
-    val approvedBy: User
+    val approvedBy: User,
+
+    @ManyToOne
+    val applicant: Person
 ) {
 }

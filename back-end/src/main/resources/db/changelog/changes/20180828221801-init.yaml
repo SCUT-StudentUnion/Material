@@ -103,7 +103,6 @@ databaseChangeLog:
                   name: person_id
                   type: bigint(20)
                   constraints:
-                      primaryKey: true
                       nullable: false
                       foreignKeyName: fk_person_metadata_person
                       references: person(id)
@@ -111,7 +110,6 @@ databaseChangeLog:
                   name: type_id
                   type: bigint(20)
                   constraints:
-                      primaryKey: true
                       nullable: false
                       foreignKeyName: fk_person_metadata_type
                       references: person_metadata_type(id)
@@ -137,6 +135,12 @@ databaseChangeLog:
                   constraints:
                       foreignKeyName: fk_use_application_approved_by
                       references: user(id)
+            - column:
+                  name: applicant_id
+                  type: bigint(20)
+                  constraints:
+                      foreignKeyName: fk_use_application_applicant
+                      references: person(id)
       - createTable:
             tableName: return_record
             columns:
