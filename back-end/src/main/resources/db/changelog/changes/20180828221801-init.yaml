@@ -73,16 +73,10 @@ databaseChangeLog:
             tableName: person_metadata_type
             columns:
             - column:
-                  name: id
-                  type: bigint(20)
-                  autoIncrement: true
+                  name: name
+                  type: varchar(20)
                   constraints:
                       primaryKey: true
-                      nullable: false
-            - column:
-                  name: name
-                  type: varchar(255)
-                  constraints:
                       nullable: false
       - insert:
             tableName: person_metadata_type
@@ -107,12 +101,12 @@ databaseChangeLog:
                       foreignKeyName: fk_person_metadata_person
                       references: person(id)
             - column:
-                  name: type_id
-                  type: bigint(20)
+                  name: type_name
+                  type: varchar(20)
                   constraints:
                       nullable: false
                       foreignKeyName: fk_person_metadata_type
-                      references: person_metadata_type(id)
+                      references: person_metadata_type(name)
             - column:
                   name: value
                   type: varchar(255)
