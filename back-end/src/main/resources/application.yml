@@ -20,3 +20,9 @@ spring:
 # uncomment the following lines to let hibernate generate database
 #spring.jpa.hibernate.ddl-auto: create
 #spring.liquibase.enabled: false
+---
+
+spring:
+    profiles: test
+    liquibase:
+        enabled: false
