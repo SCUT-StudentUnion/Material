@@ -1,14 +1,17 @@
 language: java
 sudo: false
 os:
-    - linux
+- linux
 dist: trusty
 jdk:
-    - openjdk8
+- openjdk8
 cache:
-    directories:
-        - $HOME/.m2
+  directories:
+  - "$HOME/.m2"
 
+before_install:
+- openssl aes-256-cbc -K $encrypted_25dfbe1296eb_key -iv $encrypted_25dfbe1296eb_iv
+  -in deploy.enc -out deploy -d
 install:
 script:
-    - cd back-end && ./mvnw package -B -DskipTests=true && cd ..
+- cd back-end && ./mvnw package -B -DskipTests=true && cd ..
