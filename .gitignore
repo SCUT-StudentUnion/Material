@@ -1,2 +1,6 @@
 .DS_Store
 .vscode/settings.json
+
+#deploy ssh key pair
+deploy
+deploy.pub
